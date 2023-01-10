@@ -1,6 +1,6 @@
 export const handleSubmit = async (body) => {
   try {
-    const response = await fetch("submit", {
+    const response = await fetch("/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
