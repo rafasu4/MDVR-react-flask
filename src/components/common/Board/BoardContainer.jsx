@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { handleSubmit } from "../../../Utils/apiUtils";
 import TextDiv from "../TextDiv";
@@ -19,6 +20,7 @@ const BoardContainer = () => {
   const [totalAlters, setTotalAlters] = useState(1);
   const [rounds, setRounds] = useState(0);
   const [voters, setVoters] = useState([{}]);
+  const navigate = useNavigate();
 
   const alphabet = [
     "A",
@@ -71,7 +73,10 @@ const BoardContainer = () => {
       remaining_rounds: parseInt(rounds),
     };
     console.log(body);
-    handleSubmit(body);
+    handleSubmit(body).then((res) => {
+      console.log(res);
+      navigate("/winner", { state: { winner: res.message } });
+    });
   };
 
   return (

@@ -56,7 +56,7 @@ const Voter = (props) => {
       selectArr.push(
         <Select
           key={i}
-          value={"A"}
+          value={preference[i]}
           onChange={(e) => onPreferenceChangeHandler(i, e)}
         >
           {altersAvailable.map((option, index) => (

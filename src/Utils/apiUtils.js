@@ -1,6 +1,6 @@
 export const handleSubmit = async (body) => {
   try {
-    const response = await fetch("submit", {
+    const response = await fetch("/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -11,7 +11,7 @@ export const handleSubmit = async (body) => {
     if (response.ok) {
       const json = await response.json();
       console.log(json);
-      alert("Successfully Submmited!");
+      return json;
     } else {
       throw new Error(response.statusText);
     }
