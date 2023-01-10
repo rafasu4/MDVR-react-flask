@@ -1,11 +1,11 @@
 export const handleSubmit = async (body) => {
   try {
-    const response = await fetch("/submit", {
+    const response = await fetch("http://157.230.22.122:8888/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body,
     });
 
     if (response.ok) {
