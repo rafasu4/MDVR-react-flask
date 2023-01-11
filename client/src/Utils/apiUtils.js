@@ -5,7 +5,7 @@ export const handleSubmit = async (body) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body,
+      body: JSON.stringify(body)
     });
 
     if (response.ok) {
