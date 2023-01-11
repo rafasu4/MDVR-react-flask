@@ -1,6 +1,6 @@
 export const handleSubmit = async (body) => {
   try {
-    const response = await fetch("http://157.230.22.122:8888/submit", {
+    const response = await fetch("https://157.230.22.122:8888/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
