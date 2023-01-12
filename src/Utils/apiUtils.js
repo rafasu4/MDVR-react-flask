@@ -2,7 +2,6 @@ export const handleSubmit = async (body) => {
   try {
     const response = await fetch("https://157.230.22.122:8888/submit", {
       method: "POST",
-      mode:'no-cors',
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
