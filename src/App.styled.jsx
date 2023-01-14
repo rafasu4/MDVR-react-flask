@@ -8,7 +8,6 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-  border: 1px solid red;
   text-align: center;
 `;
 
