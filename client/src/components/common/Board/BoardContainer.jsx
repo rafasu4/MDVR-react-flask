@@ -139,7 +139,16 @@ const BoardContainer = () => {
 };
 
 const SubmitBtn = styled.button`
+  width: 145px;
+  height: 40px;
   text-transform: uppercase;
+  background: #0dcbcb;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-family: "Open Sans";
+  color: #ffff;
+  font-weight: 700;
+  margin-top: 4px;
 `;
 
 const GeneralData = styled.div`

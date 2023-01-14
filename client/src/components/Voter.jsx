@@ -41,9 +41,7 @@ const Voter = (props) => {
 
   const onPreferenceChangeHandler = (index, e) => {
     let updatedPreference = [...preference];
-    console.log(updatedPreference);
     updatedPreference[index] = e.target.value;
-    console.log(updatedPreference);
     setPreference(updatedPreference);
     voterUpdate(id, "alters_pref", updatedPreference);
   };
@@ -56,10 +54,10 @@ const Voter = (props) => {
       selectArr.push(
         <Select
           key={i}
-          value={preference[i]}
           onChange={(e) => onPreferenceChangeHandler(i, e)}
         >
-          {altersAvailable.map((option, index) => (
+          <option defaultValue={true} disabled selected value> -- select an alternative -- </option>
+          {altersAvailable.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>

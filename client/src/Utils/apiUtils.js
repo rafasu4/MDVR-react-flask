@@ -1,9 +1,12 @@
 export const handleSubmit = async (body) => {
   try {
-    const response = await fetch("http://157.230.22.122:8888/submit", {
+    const response = await fetch("https://raf-server-production.up.railway.app/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Access-Control-Allow-Origin": "*",
+         "Access-Control-Allow-Methods": "*"
       },
       body: JSON.stringify(body)
     });

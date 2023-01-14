@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: slategray;
+  background: #3C4853;
 `;
 
 export const Header = styled.header`

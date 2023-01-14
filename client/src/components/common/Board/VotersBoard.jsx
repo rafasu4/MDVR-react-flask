@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import PlusIcon from "../../assets/PlusIcon";
 import Voter from "../../Voter";
 
 const VotersBoard = (props) => {
   const { totalAlters } = props;
-  const [voters, setVoters] = useState([{ type: "0", alters_pref: ["A"] }]);
+  const [voters, setVoters] = useState([{ type: 0, alters_pref: [] }]);
 
   const addVoter = () => {
     const newVoter = { type: 0, alters_pref: [] };
@@ -42,13 +43,27 @@ const VotersBoard = (props) => {
     props.updateVoters(voters);
   }, []);
 
+  useEffect(() => {
+    console.log("render");
+  }, [totalAlters]);
+
   return (
     <VoterBoardWrapper>
-      <CreateButton onClick={addVoter}>add user</CreateButton>
+      <ButtonWrapper onClick={addVoter}>
+        <PlusIcon />
+        <CreateButton>add user</CreateButton>
+      </ButtonWrapper>
       <VoterBoardContainer>{renderVoters()}</VoterBoardContainer>
     </VoterBoardWrapper>
   );
 };
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
 
 const VoterBoardWrapper = styled.div`
   display: flex;
@@ -75,8 +90,14 @@ const VoterRow = styled.div`
 `;
 
 const CreateButton = styled.button`
+  border: transparent;
+  background: transparent;
+  color: #ffff;
+  font-family: "Open sans";
+  font-weight: 800;
   height: 25px;
   text-transform: uppercase;
+  cursor: inherited;
 `;
 
 export default VotersBoard;
