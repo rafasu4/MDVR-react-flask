@@ -76,6 +76,7 @@ const VoterBoardContainer = styled.div`
   height: fit-content;
   max-height: 394px;
   width: fit-content;
+  max-width: 664px;
   border-radius: 16px;
   border: 1px solid #919aa4;
   background: #3c4853;

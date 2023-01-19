@@ -115,7 +115,6 @@ const BoardContainer = () => {
           <CountInput
             value={totalAlters}
             min={1}
-            max={7}
             onChange={totalAltersChangeHandler}
           />
         </OptionsWrapper>
