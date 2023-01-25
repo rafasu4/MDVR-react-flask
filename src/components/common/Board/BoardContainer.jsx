@@ -68,11 +68,11 @@ const BoardContainer = () => {
     // each user's alternatives are filled
     let i = 0;
     for(i ; i< body.voters_preferences.length; i++){
-      if(body.voters_preferences[i] < totalAlters){
+      if(body.voters_preferences[i].length < totalAlters){
         missingAlterFlag = true;
         break;
       }
-      if(Array.from(new Set(body.voters_preferences[i])).length != body.voters_preferences[i].length){
+      if((Array.from(new Set(body.voters_preferences[i])).length != body.voters_preferences[i].length)){
         duplicateAlterFlag = true;
         break;
       }
