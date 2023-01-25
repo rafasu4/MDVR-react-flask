@@ -72,7 +72,7 @@ const BoardContainer = () => {
         missingAlterFlag = true;
         break;
       }
-      if(Array.from(new Set(body.voters_preferences[i])) != body.voters_preferences[i].length){
+      if(Array.from(new Set(body.voters_preferences[i])).length != body.voters_preferences[i].length){
         duplicateAlterFlag = true;
         break;
       }
