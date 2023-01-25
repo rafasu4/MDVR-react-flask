@@ -62,6 +62,31 @@ const BoardContainer = () => {
     setRounds(e.target.value);
   };
 
+  const inputValidation = (body) => {
+    let missingAlterFlag = false;
+    let duplicateAlterFlag = false;
+    // each user's alternatives are filled
+    let i = 0;
+    for(i ; i< body.voters_preferences.length; i++){
+      if(body.voters_preferences[i] < totalAlters){
+        missingAlterFlag = true;
+        break;
+      }
+      if(Array.from(new Set(body.voters_preferences[i])) != body.voters_preferences[i].length){
+        duplicateAlterFlag = true;
+        break;
+      }
+    }
+    if(missingAlterFlag){
+      alert(`missing user ${i + 1} preference`)
+      return missingAlterFlag;
+    }
+    if(duplicateAlterFlag){
+      alert(`each preference at user ${i + 1} needs to be unique!`)
+      return duplicateAlterFlag;
+    }
+  }
+
   const submitHandler = () => {
     const totalVoters = voters.length;
     const alters = alphabet.slice(0, totalAlters);
@@ -73,6 +98,9 @@ const BoardContainer = () => {
       remaining_rounds: parseInt(rounds),
     };
     console.log(body);
+    if(inputValidation(body)){
+      return;
+    }
     handleSubmit(body).then((res) => {
       console.log(res);
       navigate("/winner", { state: { winner: res.message } });
