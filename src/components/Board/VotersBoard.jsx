@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Voter from "../../Voter";
+import Voter from "../Voter";
 
 const VotersBoard = (props) => {
   const { totalAlters, updateVoters } = props;

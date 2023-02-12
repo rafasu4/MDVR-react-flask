@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { handleSubmit } from "../../../Utils/apiUtils";
-import CountInput from "../CountInput";
-import TextDiv from "../TextDiv";
+import { handleSubmit } from "../Utils/apiUtils";
+import CountInput from "../components/common/CountInput";
+import TextDiv from "../components/common/TextDiv";
 import {
   TitleStyle,
   HeaderStyle,
   DescriptionStyle,
   VotersBoardContainer,
   HeadersWrapper,
-} from "./BoardContainer.styled";
-import VotersBoard from "./VotersBoard";
+} from "./BoardPage.styled";
+import VotersBoard from "../components/Board/VotersBoard";
 
 const BoardContainer = () => {
   const title = "Consensus Under Deadline";

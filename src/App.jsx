@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Container, Header, Main } from "./App.styled";
-import BoardContainer from "./components/common/Board/BoardContainer";
-import WinnerPage from "./components/common/WinnerPage";
+import BoardPage from "./Pages/BoardPage";
+import WinnerPage from "./Pages/WinnerPage";
 
 function App() {
   useEffect(() => {
@@ -15,7 +15,7 @@ function App() {
       <Main>
         <BrowserRouter>
           <Routes>
-            <Route exact path="/" element={<BoardContainer />} />
+            <Route exact path="/" element={<BoardPage />} />
             <Route path="/winner" element={<WinnerPage />} />
           </Routes>
         </BrowserRouter>
