@@ -1,6 +1,6 @@
 export const handleSubmit = async (body) => {
   try {
-    const response = await fetch("https://raf-server-production.up.railway.app/submit", {
+    const response = await fetch("https://web-production-8bfa.up.railway.app/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
