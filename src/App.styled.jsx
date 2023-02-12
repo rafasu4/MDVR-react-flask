@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #3C4853;
+  background: #3c4853;
 `;
 
 export const Header = styled.header`
@@ -12,12 +12,8 @@ export const Header = styled.header`
 `;
 
 export const Main = styled.main`
-width: 100%;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  flex-wrap: wrap;
 `;
-

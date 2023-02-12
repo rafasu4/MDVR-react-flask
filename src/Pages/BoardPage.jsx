@@ -84,65 +84,75 @@ const BoardContainer = () => {
   };
 
   return (
-    <VotersBoardContainer>
-      <HeadersWrapper>
-        <TextDiv
-          text={title}
-          width={TitleStyle.width}
-          height={TitleStyle.height}
-          weight={TitleStyle.fontWeight}
-          fontSize={TitleStyle.fontSize}
-        />
-        <TextDiv
-          text={header}
-          width={HeaderStyle.width}
-          height={HeaderStyle.height}
-          weight={HeaderStyle.fontWeight}
-          fontSize={HeaderStyle.fontSize}
-        />
-        <TextDiv
-          text={description}
-          width={DescriptionStyle.width}
-          height={DescriptionStyle.height}
-          weight={DescriptionStyle.fontWeight}
-          fontSize={DescriptionStyle.fontSize}
-          margin={DescriptionStyle.margin}
-        />
-      </HeadersWrapper>
-      <GeneralData>
-        <OptionsWrapper>
+    <VotersBoardWrapper>
+      <VotersBoardContainer>
+        <HeadersWrapper>
           <TextDiv
-            text="Number of alternatives"
-            width="fit-content"
-            height="fit-content"
+            text={title}
+            width={TitleStyle.width}
+            height={TitleStyle.height}
+            weight={TitleStyle.fontWeight}
+            fontSize={TitleStyle.fontSize}
           />
-          <CountInput
-            value={totalAlters}
-            min={1}
-            max={7}
-            onChange={totalAltersChangeHandler}
-            info={altersInfo}
-          />
-        </OptionsWrapper>
-        <OptionsWrapper>
           <TextDiv
-            text="Number of rounds"
-            width="fit-content"
-            height="fit-content"
+            text={header}
+            width={HeaderStyle.width}
+            height={HeaderStyle.height}
+            weight={HeaderStyle.fontWeight}
+            fontSize={HeaderStyle.fontSize}
           />
-          <CountInput
-            value={rounds}
-            min={1}
-            onChange={totalRoundsChangeHandler}
-            info={roundInfo}
+          <TextDiv
+            text={description}
+            width={DescriptionStyle.width}
+            height={DescriptionStyle.height}
+            weight={DescriptionStyle.fontWeight}
+            fontSize={DescriptionStyle.fontSize}
+            margin={DescriptionStyle.margin}
           />
-        </OptionsWrapper>
-      </GeneralData>
-      <VotersBoard totalAlters={totalAlters} updateVoters={updateVoters} />
-      <SubmitBtn onClick={submitHandler}>submit</SubmitBtn>
-    </VotersBoardContainer>
+        </HeadersWrapper>
+        <GeneralData>
+          <OptionsWrapper>
+            <TextDiv
+              text="Number of alternatives"
+              width="fit-content"
+              height="fit-content"
+            />
+            <CountInput
+              value={totalAlters}
+              min={1}
+              max={7}
+              onChange={totalAltersChangeHandler}
+              info={altersInfo}
+            />
+          </OptionsWrapper>
+          <OptionsWrapper>
+            <TextDiv
+              text="Number of rounds"
+              width="fit-content"
+              height="fit-content"
+            />
+            <CountInput
+              value={rounds}
+              min={1}
+              onChange={totalRoundsChangeHandler}
+              info={roundInfo}
+            />
+          </OptionsWrapper>
+        </GeneralData>
+        <VotersBoard totalAlters={totalAlters} updateVoters={updateVoters} />
+        <SubmitBtn onClick={submitHandler}>submit</SubmitBtn>
+      </VotersBoardContainer>
+    </VotersBoardWrapper>
   );
 };
+
+const VotersBoardWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+`
 
 const SubmitBtn = styled.button`
   width: 145px;
