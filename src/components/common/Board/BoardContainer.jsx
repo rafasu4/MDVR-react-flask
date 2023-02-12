@@ -18,8 +18,9 @@ const BoardContainer = () => {
   const header = "MDVR - Algorithm for group making decision";
   const description =
     "Enter the required fields in order to run the algorithm.";
-  const altersInfo = 'Alternatives represent the choices offered to the voters.'
-  const roundInfo = 'Total rounds for the voters to come to agreement.'
+  const altersInfo =
+    "Alternatives represent the choices offered to the voters.";
+  const roundInfo = "Total rounds for the voters to come to agreement.";
   const [totalAlters, setTotalAlters] = useState(1);
   const [rounds, setRounds] = useState(0);
   const [voters, setVoters] = useState([{}]);
@@ -144,7 +145,17 @@ const BoardContainer = () => {
 };
 
 const SubmitBtn = styled.button`
+  width: 145px;
+  height: 40px;
   text-transform: uppercase;
+  text-transform: uppercase;
+  background: #0dcbcb;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-family: "Open Sans";
+  color: #ffff;
+  font-weight: 700;
+  margin-top: 4px;
 `;
 
 const GeneralData = styled.div`
