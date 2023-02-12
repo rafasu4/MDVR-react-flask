@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { handleSubmit } from "../../../Utils/apiUtils";
+import CountInput from "../CountInput";
 import TextDiv from "../TextDiv";
 import {
   TitleStyle,
@@ -17,6 +18,8 @@ const BoardContainer = () => {
   const header = "MDVR - Algorithm for group making decision";
   const description =
     "Enter the required fields in order to run the algorithm.";
+  const altersInfo = 'Alternatives represent the choices offered to the voters.'
+  const roundInfo = 'Total rounds for the voters to come to agreement.'
   const [totalAlters, setTotalAlters] = useState(1);
   const [rounds, setRounds] = useState(0);
   const [voters, setVoters] = useState([{}]);
@@ -62,31 +65,6 @@ const BoardContainer = () => {
     setRounds(e.target.value);
   };
 
-  const inputValidation = (body) => {
-    let missingAlterFlag = false;
-    let duplicateAlterFlag = false;
-    // each user's alternatives are filled
-    let i = 0;
-    for(i ; i< body.voters_preferences.length; i++){
-      if(body.voters_preferences[i].length < totalAlters){
-        missingAlterFlag = true;
-        break;
-      }
-      if((Array.from(new Set(body.voters_preferences[i])).length != body.voters_preferences[i].length)){
-        duplicateAlterFlag = true;
-        break;
-      }
-    }
-    if(missingAlterFlag){
-      alert(`missing user ${i + 1} preference`)
-      return missingAlterFlag;
-    }
-    if(duplicateAlterFlag){
-      alert(`each preference at user ${i + 1} needs to be unique!`)
-      return duplicateAlterFlag;
-    }
-  }
-
   const submitHandler = () => {
     const totalVoters = voters.length;
     const alters = alphabet.slice(0, totalAlters);
@@ -98,9 +76,6 @@ const BoardContainer = () => {
       remaining_rounds: parseInt(rounds),
     };
     console.log(body);
-    if(inputValidation(body)){
-      return;
-    }
     handleSubmit(body).then((res) => {
       console.log(res);
       navigate("/winner", { state: { winner: res.message } });
@@ -143,7 +118,9 @@ const BoardContainer = () => {
           <CountInput
             value={totalAlters}
             min={1}
+            max={7}
             onChange={totalAltersChangeHandler}
+            info={altersInfo}
           />
         </OptionsWrapper>
         <OptionsWrapper>
@@ -156,6 +133,7 @@ const BoardContainer = () => {
             value={rounds}
             min={1}
             onChange={totalRoundsChangeHandler}
+            info={roundInfo}
           />
         </OptionsWrapper>
       </GeneralData>
@@ -166,16 +144,7 @@ const BoardContainer = () => {
 };
 
 const SubmitBtn = styled.button`
-  width: 145px;
-  height: 40px;
   text-transform: uppercase;
-  background: #0dcbcb;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  font-family: "Open Sans";
-  color: #ffff;
-  font-weight: 700;
-  margin-top: 4px;
 `;
 
 const GeneralData = styled.div`
@@ -190,10 +159,6 @@ const OptionsWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 8px;
-`;
-
-const CountInput = styled.input.attrs({ type: "number" })`
-  width: 30px;
 `;
 
 export default BoardContainer;

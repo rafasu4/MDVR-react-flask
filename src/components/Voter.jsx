@@ -1,10 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
+import ToolTip from "./ToolTip";
 
 const Voter = (props) => {
   const { id, totalAlters, voterUpdate } = props;
   const [preference, setPreference] = useState(props.preference);
   const [type, setType] = useState(props.type);
+  const userTypeInfo = `Choose type - 0 for 'Lazy' or 1 for 'Active'`;
   const alphabet = [
     "A",
     "B",
@@ -41,7 +43,9 @@ const Voter = (props) => {
 
   const onPreferenceChangeHandler = (index, e) => {
     let updatedPreference = [...preference];
+    console.log(updatedPreference);
     updatedPreference[index] = e.target.value;
+    console.log(updatedPreference);
     setPreference(updatedPreference);
     voterUpdate(id, "alters_pref", updatedPreference);
   };
@@ -54,10 +58,10 @@ const Voter = (props) => {
       selectArr.push(
         <Select
           key={i}
+          value={preference[i]}
           onChange={(e) => onPreferenceChangeHandler(i, e)}
         >
-          <option defaultValue={true} disabled selected value> -- select an alternative -- </option>
-          {altersAvailable.map((option) => (
+          {altersAvailable.map((option, index) => (
             <option key={option} value={option}>
               {option}
             </option>
@@ -70,18 +74,21 @@ const Voter = (props) => {
 
   return (
     <VoterContainer>
-      <Select
-        id="voter-type"
-        value={type}
-        onChange={(e) => onTypeChangeHandler(e)}
-      >
-        <option key="0" value={0}>
-          0
-        </option>
-        <option key="1" value={1}>
-          1
-        </option>
-      </Select>
+      <UserTypeWrapper>
+        <Select
+          id="voter-type"
+          value={type}
+          onChange={(e) => onTypeChangeHandler(e)}
+        >
+          <option key="0" value={0}>
+            0
+          </option>
+          <option key="1" value={1}>
+            1
+          </option>
+        </Select>
+        <ToolTip info={userTypeInfo} />
+      </UserTypeWrapper>
       {renderAltersPreference()}
     </VoterContainer>
   );
@@ -96,6 +103,12 @@ const VoterContainer = styled.div`
 const Select = styled.select`
   width: 38px;
   height: 26px;
+`;
+
+const UserTypeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 
 export default Voter;

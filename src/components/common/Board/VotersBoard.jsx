@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import PlusIcon from "../../assets/PlusIcon";
 import Voter from "../../Voter";
 
 const VotersBoard = (props) => {
-  const { totalAlters } = props;
-  const [voters, setVoters] = useState([{ type: 0, alters_pref: [] }]);
+  const { totalAlters, updateVoters } = props;
+  const [voters, setVoters] = useState([{ type: "0", alters_pref: ["A"] }]);
 
   const addVoter = () => {
     const newVoter = { type: 0, alters_pref: [] };
@@ -22,10 +21,10 @@ const VotersBoard = (props) => {
 
   const renderVoters = () => {
     const votersArr = [];
-    voters.map((v, index) => {
+    voters.forEach((v, index) => {
       votersArr.push(
         <VoterRow key={index}>
-          user num {index + 1}:
+          User  {index + 1}:
           <Voter
             id={index}
             type={v.type}
@@ -40,30 +39,16 @@ const VotersBoard = (props) => {
   };
 
   useEffect(() => {
-    props.updateVoters(voters);
+    updateVoters(voters);
   }, []);
-
-  useEffect(() => {
-    console.log("render");
-  }, [totalAlters]);
 
   return (
     <VoterBoardWrapper>
-      <ButtonWrapper onClick={addVoter}>
-        <PlusIcon />
-        <CreateButton>add user</CreateButton>
-      </ButtonWrapper>
+      <CreateButton onClick={addVoter}>add user</CreateButton>
       <VoterBoardContainer>{renderVoters()}</VoterBoardContainer>
     </VoterBoardWrapper>
   );
 };
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
 
 const VoterBoardWrapper = styled.div`
   display: flex;
@@ -76,7 +61,6 @@ const VoterBoardContainer = styled.div`
   height: fit-content;
   max-height: 394px;
   width: fit-content;
-  max-width: 664px;
   border-radius: 16px;
   border: 1px solid #919aa4;
   background: #3c4853;
@@ -91,14 +75,8 @@ const VoterRow = styled.div`
 `;
 
 const CreateButton = styled.button`
-  border: transparent;
-  background: transparent;
-  color: #ffff;
-  font-family: "Open sans";
-  font-weight: 800;
   height: 25px;
   text-transform: uppercase;
-  cursor: inherited;
 `;
 
 export default VotersBoard;
