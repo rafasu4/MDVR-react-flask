@@ -7,10 +7,10 @@ const LogsTable = () => {
       <TableHeader>
         <TableHeaderRow>
           <TableHeaderCell key="filler1_header" width="10%" />
-          <TableHeaderCell key="time" width="2%" />
-          <TableHeaderCell key="voters">User</TableHeaderCell>
-          <TableHeaderCell key="scores">Platform</TableHeaderCell>
-          <TableHeaderCell key="possible_winners">Group</TableHeaderCell>
+          <TableHeaderCell key="time">Round</TableHeaderCell>
+          <TableHeaderCell key="voters">Voters Ballot</TableHeaderCell>
+          <TableHeaderCell key="scores">Scores</TableHeaderCell>
+          <TableHeaderCell key="possible_winners">Possible Winners</TableHeaderCell>
           <TableHeaderCell key="filler2_header" width="10%" />
         </TableHeaderRow>
       </TableHeader>

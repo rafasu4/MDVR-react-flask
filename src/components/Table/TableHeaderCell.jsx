@@ -15,7 +15,7 @@ const TableHeaderCellStyled = styled.th`
   text-transform: uppercase;
   color: white;
   font-weight: 600;
-  text-align: ${({ textAlign }) => (textAlign ? textAlign : "")};
+  text-align: center;
   border-bottom: ${({ noBorders }) =>
     noBorders ? "" : `2px solid white`};
 `;

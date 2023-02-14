@@ -78,7 +78,6 @@ const BoardContainer = () => {
     };
     console.log(body);
     handleSubmit(body).then((res) => {
-      console.log(res);
       navigate("/winner", { state: { winner: res.message } });
     });
   };
