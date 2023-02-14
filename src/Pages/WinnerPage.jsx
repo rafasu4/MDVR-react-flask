@@ -9,7 +9,7 @@ const WinnerPage = () => {
     <WinnerPageWrapper>
       <WinnerMessage>{state.winner[1]}</WinnerMessage>
       <LogsTableWrapper>
-        <LogsTable />
+        <LogsTable logs={state.winner[0]} />
       </LogsTableWrapper>
     </WinnerPageWrapper>
   );

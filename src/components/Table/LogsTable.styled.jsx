@@ -19,3 +19,30 @@ export const TableHeaderRow = styled.tr`
   border-top: 2px solid white;
   border-bottom: 2px solid white;
 `;
+
+export const TableBody = styled.tbody`
+  display: block;
+  max-height: 327px;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    width: ${SCROLLBAR_WIDTH}px;
+    height: 328px;
+    background: white;
+  }
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  ::-webkit-scrollbar-track {
+    background: white;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 100px;
+`;
+
+export const TableRow = styled.tr`
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  font-family: Open Sans;
+`;
