@@ -73,7 +73,7 @@ const VotersBoard = (props) => {
 
   useEffect(() => {
     updateVoters(voters);
-    const altersMax = totalAlters >= alphabet.length? alphabet.length : totalAlters; // max choice in the alphabet
+    const altersMax = totalAlters >= alphabet.length ? alphabet.length : totalAlters; // max choice in the alphabet
     setAlternatives(alphabet.slice(0, altersMax));
   }, [totalAlters]);
 
@@ -87,15 +87,15 @@ const VotersBoard = (props) => {
 
 const VoterBoardWrapper = styled.div`
   display: flex;
+  max-width: 100%;
   flex-direction: column;
   margin-top: 30px;
 `;
 const VoterBoardContainer = styled.div`
   display: flex;
-  flex-direction: column;
   height: fit-content;
   max-height: 394px;
-  width: fit-content;
+  max-width 100%;
   border-radius: 16px;
   border: 1px solid #919aa4;
   background: #3c4853;
@@ -106,12 +106,13 @@ const VoterBoardContainer = styled.div`
 
 const VoterRow = styled.div`
   display: flex;
-  gap: 5px;
+  gap: 10px;
 `;
 
 const CreateButton = styled.button`
   height: 25px;
   text-transform: uppercase;
+  cursor: pointer;
 `;
 
 export default VotersBoard;

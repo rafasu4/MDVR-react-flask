@@ -164,6 +164,7 @@ const SubmitBtn = styled.button`
   color: #ffff;
   font-weight: 700;
   margin-top: 4px;
+  cursor: pointer;
 `;
 
 const GeneralData = styled.div`

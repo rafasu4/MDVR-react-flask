@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import ToolTip from "../ToolTip";
+import Alternative from "./Alternative";
 import VoterType from "./VoterType";
 
 const Voter = (props) => {
@@ -37,7 +38,7 @@ const Voter = (props) => {
         <ToolTip info={userTypeInfo} />
       </UserTypeWrapper>
       {preference.map((e, i) => (
-        <div key={i} draggable onDragStart={() => dragItemStart.current = i} onDragEnter={() => dragItemHover.current = i} onDragEnd={preferenceChangeHandler}>{e}</div>
+        <Alternative index={i} onDragStartHandler={() => dragItemStart.current = i} onDragEnterHandler={() => dragItemHover.current = i} onDragEndHandler={preferenceChangeHandler} value={e} />
       ))}
     </VoterContainer>
   );
@@ -45,6 +46,7 @@ const Voter = (props) => {
 
 const VoterContainer = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 30px;
   justify-content: center;
 `;
