@@ -1,10 +1,39 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Voter from "../Voter";
+import Voter from "../Voter/Voter";
 
 const VotersBoard = (props) => {
   const { totalAlters, updateVoters } = props;
-  const [voters, setVoters] = useState([{ type: "0", alters_pref: ["A"] }]);
+  const [alternatives, setAlternatives] = useState([]);
+  const [voters, setVoters] = useState([{ type: "0", alters_pref: [] }]);
+  const alphabet = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
 
   const addVoter = () => {
     const newVoter = { type: 0, alters_pref: [] };
@@ -28,8 +57,7 @@ const VotersBoard = (props) => {
           <Voter
             id={index}
             type={v.type}
-            preference={v.alters_pref}
-            totalAlters={totalAlters}
+            preference={alternatives}
             voterUpdate={voterUpdate}
           />
         </VoterRow>
@@ -40,7 +68,9 @@ const VotersBoard = (props) => {
 
   useEffect(() => {
     updateVoters(voters);
-  }, []);
+    const altersMax = totalAlters >= alphabet.length? alphabet.length : totalAlters; // max choice in the alphabet
+    setAlternatives(alphabet.slice(0, altersMax));
+  }, [totalAlters]);
 
   return (
     <VoterBoardWrapper>
