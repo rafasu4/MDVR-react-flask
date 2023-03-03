@@ -6,12 +6,10 @@ import VoterType from "./VoterType";
 const Voter = (props) => {
   const { id, voterUpdate } = props;
   const [type, setType] = useState(0);
-  const [preference, setPreference] = useState(props.preference);
+  const [preference, setPreference] = useState([]);
   const dragItemStart = useRef();
   const dragItemHover = useRef();
   const userTypeInfo = `Choose type - 0 for 'Lazy' or 1 for 'Active'`;
-  
-  
 
   const onTypeChangeHandler = (e) => {
     setType(e.target.value);
@@ -28,17 +26,14 @@ const Voter = (props) => {
   };
 
   useEffect(() => {
+    voterUpdate(id, "alters_pref", props.preference);
     setPreference(props.preference)
   }, [props.preference])
-
-  useEffect(() => {
-    voterUpdate(id, "alters_pref", 'A');
-  }, [])
 
   return (
     <VoterContainer>
       <UserTypeWrapper>
-       <VoterType type={type} onTypeChangeHandler={onTypeChangeHandler} />
+        <VoterType type={type} onTypeChangeHandler={onTypeChangeHandler} />
         <ToolTip info={userTypeInfo} />
       </UserTypeWrapper>
       {preference.map((e, i) => (

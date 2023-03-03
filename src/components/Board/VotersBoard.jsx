@@ -68,6 +68,11 @@ const VotersBoard = (props) => {
 
   useEffect(() => {
     updateVoters(voters);
+    setAlternatives(alphabet.slice(0, 1));
+  }, []);
+
+  useEffect(() => {
+    updateVoters(voters);
     const altersMax = totalAlters >= alphabet.length? alphabet.length : totalAlters; // max choice in the alphabet
     setAlternatives(alphabet.slice(0, altersMax));
   }, [totalAlters]);
