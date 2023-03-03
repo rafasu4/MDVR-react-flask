@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import LogsTable from "../components/Table/LogsTable";
+import { exportTxtFile } from "../Utils/localUtils";
 
 const WinnerPage = () => {
   const { state } = useLocation();
@@ -11,6 +13,7 @@ const WinnerPage = () => {
       <LogsTableWrapper>
         <LogsTable logs={state.winner[0]} />
       </LogsTableWrapper>
+      <button onClick={() => state.winner[2]? exportTxtFile(state.winner[2]) : ''} >Export Full Logs</button>
     </WinnerPageWrapper>
   );
 };
