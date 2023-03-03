@@ -76,7 +76,6 @@ const BoardContainer = () => {
       voters_preferences: voters.map((v) => v.alters_pref),
       remaining_rounds: parseInt(rounds),
     };
-    console.log(body);
     handleSubmit(body).then((res) => {
       navigate("/winner", { state: { winner: res.message } });
     });
