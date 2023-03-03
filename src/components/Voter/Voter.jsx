@@ -19,9 +19,11 @@ const Voter = (props) => {
 
   const preferenceChangeHandler = () => {
     const currentPref = [...preference];
-    currentPref.splice(dragItemStart.current, 0, currentPref.splice(dragItemHover.current, 1)[0]);
+    const val = currentPref.splice(dragItemStart.current, 1);
+    currentPref.splice(dragItemHover.current, 0, val[0]);
     dragItemStart.current = null;
     dragItemHover.current = null;
+    console.log('after change: ', currentPref)
     setPreference(currentPref);
     voterUpdate(id, "alters_pref", currentPref);
   };
@@ -38,7 +40,7 @@ const Voter = (props) => {
         <ToolTip info={userTypeInfo} />
       </UserTypeWrapper>
       {preference.map((e, i) => (
-        <Alternative index={i} onDragStartHandler={() => dragItemStart.current = i} onDragEnterHandler={() => dragItemHover.current = i} onDragEndHandler={preferenceChangeHandler} value={e} />
+        <Alternative key={i} onDragStartHandler={() => dragItemStart.current = i} onDragEnterHandler={() => dragItemHover.current = i} onDragEndHandler={preferenceChangeHandler} value={e} />
       ))}
     </VoterContainer>
   );

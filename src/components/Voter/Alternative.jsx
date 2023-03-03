@@ -2,9 +2,9 @@ import styled from "styled-components";
 import MenuIcon from "../../assets/icons/MenuIcon";
 
 const Alternative = (props) => {
-    const { index, onDragStartHandler, onDragEnterHandler, onDragEndHandler, value } = props;
+    const { onDragStartHandler, onDragEnterHandler, onDragEndHandler, value } = props;
     return (
-        <AlterWrapper key={index} draggable onDragStart={onDragStartHandler} onDragEnter={onDragEnterHandler} onDragEnd={onDragEndHandler}>
+        <AlterWrapper draggable onDragStart={onDragStartHandler} onDragEnter={onDragEnterHandler} onDragEnd={onDragEndHandler}>
             <MenuIcon />
             <AlterContainer>{value}</AlterContainer>
         </AlterWrapper>
