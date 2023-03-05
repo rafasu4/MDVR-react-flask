@@ -4,7 +4,6 @@ export const Container = styled.div`
   padding: 1em;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
-  color: #b9b9b9;
   background-color: #e3e3e3;
 `;
 

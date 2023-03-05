@@ -5,10 +5,15 @@ const SCROLLBAR_WIDTH = 14;
 export const TableStyled = styled.table`
   border-collapse: collapse;
   overflow: hidden;
+  background: #fff;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+  border-radius: 4.2px;
 `;
 
 export const TableHeader = styled.thead`
   display: table-header-group;
+  border-bottom: 1px solid grey;
+  border-radius: 10px;
 `;
 
 export const TableHeaderRow = styled.tr`
@@ -16,8 +21,7 @@ export const TableHeaderRow = styled.tr`
   width: calc(100% - ${SCROLLBAR_WIDTH}px);
   table-layout: fixed;
   font-family: Open Sans;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+  color: #b9b9b9;
 `;
 
 export const TableBody = styled.tbody`

@@ -59,7 +59,6 @@ const LogsTable = (props) => {
 
   useEffect(() => {
     if (logs) {
-      console.log(logs)
       setData(parseLogsData(logs));
     }
   }, [logs])

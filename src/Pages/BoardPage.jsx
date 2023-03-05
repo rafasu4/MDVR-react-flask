@@ -8,7 +8,6 @@ import {
   TitleStyle,
   HeaderStyle,
   DescriptionStyle,
-  VotersBoardContainer,
   HeadersWrapper,
 } from "./BoardPage.styled";
 import VotersBoard from "../components/Board/VotersBoard";
@@ -77,7 +76,7 @@ const BoardContainer = () => {
       remaining_rounds: parseInt(rounds),
     };
     handleSubmit(body).then((res) => {
-      navigate("/winner", { state: { winner: res.message } });
+      navigate("/winner", { state: { winner: res.message, voters_preferences: body.voters_preferences } });
     });
   };
 

@@ -13,10 +13,7 @@ const TableHeaderCellStyled = styled.th`
   text-align: left;
   font-family: 'Open Sans';
   text-transform: uppercase;
-  color: white;
   font-weight: 600;
   text-align: center;
-  border-bottom: ${({ noBorders }) =>
-    noBorders ? "" : `2px solid white`};
 `;
 export default TableHeaderCell;
