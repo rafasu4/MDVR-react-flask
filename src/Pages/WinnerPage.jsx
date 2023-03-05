@@ -8,6 +8,7 @@ import { exportTxtFile } from "../Utils/localUtils";
 const WinnerPage = () => {
   const { state } = useLocation();
   const [voterSatisfaction, setVoterSatisfaction] = useState([]);
+  const [groupSatisfaction, setGroupSatisfaction] = useState();
 
   const voterSatisfactionCalc = (voterPref, totalAlters, lastVote) => {
     const percentage = 100 / totalAlters;
@@ -21,7 +22,7 @@ const WinnerPage = () => {
       satBar.push(
         <VoterSatWrapper key={i}>
           Voter {i + 1}
-          <ProgressBar done={el} />
+          <ProgressBar done={el.toFixed(2)} />
         </VoterSatWrapper>)
     })
     return satBar;
@@ -30,8 +31,17 @@ const WinnerPage = () => {
   useEffect(() => {
     const winner = state.winner[1];
     const votersPref = state.voters_preferences;
-    setVoterSatisfaction(votersPref.map((pref) => winner !== 'null' ? `${voterSatisfactionCalc(pref, pref.length, winner)}` : 0));
+    setVoterSatisfaction(votersPref.map((pref) => winner !== 'null' ? voterSatisfactionCalc(pref, pref.length, winner) : 0));
   }, [])
+
+  useEffect(() => {
+    const sum = voterSatisfaction.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    }, 0);
+    console.log(sum)
+    setGroupSatisfaction((sum / voterSatisfaction.length).toFixed(2));
+  }, [voterSatisfaction])
+
 
   return (
     <WinnerPageWrapper>
@@ -40,10 +50,12 @@ const WinnerPage = () => {
           <CardHeader>Winner Alternative</CardHeader>
           <CardText>{state.winner[1]}</CardText>
         </Card>
-        {/* <Card>
+        <Card>
           <CardHeader>Group Satisfaction</CardHeader>
-          <CardText>{state.winner[1]}</CardText>
-        </Card> */}
+          <CardText>
+            <ProgressBar done={groupSatisfaction} />
+          </CardText>
+        </Card>
         <Card>
           <CardHeader>Voters Satisfaction</CardHeader>
           <CardText>
