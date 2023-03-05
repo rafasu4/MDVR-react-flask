@@ -20,7 +20,7 @@ const AlterContainer = styled.div`
     display: flex;
     justify-content: center;
     width: 50%;
-    color: white;
+    font-weight: bolder;
 `
 
 export default Alternative;

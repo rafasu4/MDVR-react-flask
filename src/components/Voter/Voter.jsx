@@ -51,6 +51,7 @@ const VoterContainer = styled.div`
   flex-direction: column;
   gap: 30px;
   justify-content: center;
+  align-items: center;
 `;
 
 const UserTypeWrapper = styled.div`

@@ -21,10 +21,22 @@ const CountInputWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  background-color: aliceblue;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  width: 35%;
+  height: 50px;
 `;
 
 const CountInputContainer = styled.input.attrs({ type: "number" })`
-  width: 30px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  width: inherit;
+  height: inherit;
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Open Sans';
+  padding-left: 10px;
 `;
 
 export default CountInput;

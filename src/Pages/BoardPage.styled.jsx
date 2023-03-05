@@ -23,13 +23,13 @@ export const DescriptionStyle = {
 };
 
 export const VotersBoardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 1400px;
-  min-height: 800px;
-  align-items: center;
-  border-radius: 10px;
-  background: #919aa4;
+  // display: flex;
+  // flex-direction: column;
+  // width: 1400px;
+  // min-height: 800px;
+  // align-items: center;
+  // border-radius: 10px;
+  // background: #919aa4;
 `;
 
 export const HeadersWrapper = styled.div`

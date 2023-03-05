@@ -21,6 +21,8 @@ const VoterType = (props) => {
 const Select = styled.select`
   width: 38px;
   height: 26px;
+  background-color: aliceblue;
+  border: 1px solid #e5e5e5;
 `;
 
 export default VoterType;

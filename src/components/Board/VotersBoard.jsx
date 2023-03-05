@@ -53,7 +53,7 @@ const VotersBoard = (props) => {
     voters.forEach((v, index) => {
       votersArr.push(
         <VoterRow key={index}>
-          User  {index + 1}:
+          Voter  {index + 1}
           <Voter
             id={index}
             type={v.type}
@@ -87,8 +87,10 @@ const VotersBoard = (props) => {
 
   return (
     <VoterBoardWrapper>
-      <CreateButton onClick={addVoter}>add user</CreateButton>
-      <button onClick={randomize}>randomize</button>
+      <ButtonsWrapper>
+        <CreateButton onClick={addVoter}>Add User</CreateButton>
+        <RandomizeButton onClick={randomize}>Randomize</RandomizeButton>
+      </ButtonsWrapper>
       <VoterBoardContainer>{renderVoters()}</VoterBoardContainer>
     </VoterBoardWrapper>
   );
@@ -100,14 +102,17 @@ const VoterBoardWrapper = styled.div`
   flex-direction: column;
   margin-top: 30px;
 `;
+
+const ButtonsWrapper = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
 const VoterBoardContainer = styled.div`
   display: flex;
   height: fit-content;
   max-height: 394px;
   max-width 100%;
-  border-radius: 16px;
-  border: 1px solid #919aa4;
-  background: #3c4853;
   padding: 20px;
   gap: 20px;
   overflow-y: auto;
@@ -115,13 +120,40 @@ const VoterBoardContainer = styled.div`
 
 const VoterRow = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 10px;
+  color: #f0a500;
+  background: #f9f9f9;
+  border-radius: 10px;
+  align-items: center;
+  padding: 5px;
+  font-weight: 500;
 `;
 
 const CreateButton = styled.button`
-  height: 25px;
-  text-transform: uppercase;
+  width: 50%;
+  background-color: #f0a500;
+  color: #fff;
+  border-color: #bd8200;
+  font-size: larger;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid white;
   cursor: pointer;
+  font-weight: 900;
+`;
+
+const RandomizeButton = styled.button`
+  width: 50%;
+  border-color: #bd8200;
+  font-size: larger;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+  font-weight: 900;
 `;
 
 export default VotersBoard;

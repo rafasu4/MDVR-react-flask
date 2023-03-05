@@ -83,81 +83,86 @@ const BoardContainer = () => {
 
   return (
     <VotersBoardWrapper>
-      <VotersBoardContainer>
-        <HeadersWrapper>
+      <HeadersWrapper>
+        <TextDiv
+          text={title}
+          width={TitleStyle.width}
+          height={TitleStyle.height}
+          weight={TitleStyle.fontWeight}
+          fontSize={TitleStyle.fontSize}
+        />
+        <TextDiv
+          text={header}
+          width={HeaderStyle.width}
+          height={HeaderStyle.height}
+          weight={HeaderStyle.fontWeight}
+          fontSize={HeaderStyle.fontSize}
+        />
+        <TextDiv
+          text={description}
+          width={DescriptionStyle.width}
+          height={DescriptionStyle.height}
+          weight={DescriptionStyle.fontWeight}
+          fontSize={DescriptionStyle.fontSize}
+          margin={DescriptionStyle.margin}
+        />
+      </HeadersWrapper>
+      <GeneralData>
+        <OptionsWrapper>
           <TextDiv
-            text={title}
-            width={TitleStyle.width}
-            height={TitleStyle.height}
-            weight={TitleStyle.fontWeight}
-            fontSize={TitleStyle.fontSize}
+            text="Number of alternatives"
+            width="fit-content"
+            height="fit-content"
+            color='#f0a500'
+            weight={700}
           />
+          <CountInput
+            value={totalAlters}
+            min={1}
+            max={7}
+            onChange={totalAltersChangeHandler}
+            info={altersInfo}
+          />
+        </OptionsWrapper>
+        <OptionsWrapper>
           <TextDiv
-            text={header}
-            width={HeaderStyle.width}
-            height={HeaderStyle.height}
-            weight={HeaderStyle.fontWeight}
-            fontSize={HeaderStyle.fontSize}
+            text="Number of rounds"
+            width="fit-content"
+            height="fit-content"
+            color='#f0a500'
+            weight={700}
           />
-          <TextDiv
-            text={description}
-            width={DescriptionStyle.width}
-            height={DescriptionStyle.height}
-            weight={DescriptionStyle.fontWeight}
-            fontSize={DescriptionStyle.fontSize}
-            margin={DescriptionStyle.margin}
+          <CountInput
+            value={rounds}
+            min={1}
+            onChange={totalRoundsChangeHandler}
+            info={roundInfo}
           />
-        </HeadersWrapper>
-        <GeneralData>
-          <OptionsWrapper>
-            <TextDiv
-              text="Number of alternatives"
-              width="fit-content"
-              height="fit-content"
-            />
-            <CountInput
-              value={totalAlters}
-              min={1}
-              max={7}
-              onChange={totalAltersChangeHandler}
-              info={altersInfo}
-            />
-          </OptionsWrapper>
-          <OptionsWrapper>
-            <TextDiv
-              text="Number of rounds"
-              width="fit-content"
-              height="fit-content"
-            />
-            <CountInput
-              value={rounds}
-              min={1}
-              onChange={totalRoundsChangeHandler}
-              info={roundInfo}
-            />
-          </OptionsWrapper>
-        </GeneralData>
-        <VotersBoard totalAlters={totalAlters} updateVoters={updateVoters} />
-        <SubmitBtn onClick={submitHandler}>submit</SubmitBtn>
-      </VotersBoardContainer>
+        </OptionsWrapper>
+      </GeneralData>
+      <VotersBoard totalAlters={totalAlters} updateVoters={updateVoters} />
+      <SubmitBtn onClick={submitHandler}>submit</SubmitBtn>
     </VotersBoardWrapper>
   );
 };
 
 const VotersBoardWrapper = styled.div`
+  height: 100%;
   display: flex;
-  width: 100%;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-`
+  flex-direction: column;
+  max-width: 38em;
+  padding: 1em 3em 2em 3em;
+  margin: 0em auto;
+  background-color: #fff;
+  border-radius: 4.2px;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+`;
 
 const SubmitBtn = styled.button`
-  width: 145px;
   height: 40px;
   text-transform: uppercase;
   text-transform: uppercase;
-  background: #0dcbcb;
+  background: #bd8200;
   border: 1px solid transparent;
   border-radius: 4px;
   font-family: "Open Sans";
@@ -172,6 +177,7 @@ const GeneralData = styled.div`
   justify-content: center;
   gap: 50px;
   margin-top: 50px;
+  width: 100%;
 `;
 
 const OptionsWrapper = styled.div`
