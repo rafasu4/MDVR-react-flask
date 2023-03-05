@@ -38,7 +38,6 @@ const WinnerPage = () => {
     const sum = voterSatisfaction.reduce((accumulator, currentValue) => {
       return accumulator + currentValue;
     }, 0);
-    console.log(sum)
     setGroupSatisfaction((sum / voterSatisfaction.length).toFixed(2));
   }, [voterSatisfaction])
 
