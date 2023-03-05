@@ -23,7 +23,6 @@ const Voter = (props) => {
     currentPref.splice(dragItemHover.current, 0, val[0]);
     dragItemStart.current = null;
     dragItemHover.current = null;
-    console.log('after change: ', currentPref)
     setPreference(currentPref);
     voterUpdate(id, "alters_pref", currentPref);
   };
