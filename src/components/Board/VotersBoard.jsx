@@ -66,6 +66,14 @@ const VotersBoard = (props) => {
     return votersArr;
   };
 
+  const randomize = () => {
+    const votersCopy = [...voters];
+    for (let index = 0; index < votersCopy.length; index++) {
+      votersCopy[index].alters_pref = votersCopy[index].alters_pref.sort(() => Math.random() - 0.5);
+    }
+    setVoters(votersCopy);
+  }
+
   useEffect(() => {
     updateVoters(voters);
     setAlternatives(alphabet.slice(0, 1));
@@ -80,6 +88,7 @@ const VotersBoard = (props) => {
   return (
     <VoterBoardWrapper>
       <CreateButton onClick={addVoter}>add user</CreateButton>
+      <button onClick={randomize}>randomize</button>
       <VoterBoardContainer>{renderVoters()}</VoterBoardContainer>
     </VoterBoardWrapper>
   );
