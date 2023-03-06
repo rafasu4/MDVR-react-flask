@@ -36,7 +36,6 @@ const Voter = (props) => {
     <VoterContainer>
       <UserTypeWrapper>
         <VoterType type={type} onTypeChangeHandler={onTypeChangeHandler} />
-        <ToolTip info={userTypeInfo} />
       </UserTypeWrapper>
       {preference.map((e, i) => (
         <Alternative key={i} onDragStartHandler={() => dragItemStart.current = i} onDragEnterHandler={() => dragItemHover.current = i} onDragEndHandler={preferenceChangeHandler} value={e} />

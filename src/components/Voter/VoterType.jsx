@@ -9,20 +9,21 @@ const VoterType = (props) => {
             onChange={(e) => onTypeChangeHandler(e)}
         >
             <option key="0" value={0}>
-                0
+                Lazy
             </option>
             <option key="1" value={1}>
-                1
+                Active
             </option>
         </Select>
     )
 }
 
 const Select = styled.select`
-  width: 38px;
   height: 26px;
+  text-align: center;
   background-color: aliceblue;
   border: 1px solid #e5e5e5;
+  border-radius: 5px;
 `;
 
 export default VoterType;
