@@ -89,7 +89,7 @@ const VotersBoard = (props) => {
   return (
     <VoterBoardWrapper>
       <ButtonsWrapper>
-        <CreateButton onClick={addVoter}>Add User</CreateButton>
+        <CreateButton onClick={addVoter}>Add Voter</CreateButton>
         <RandomizeButton onClick={randomize}>Randomize</RandomizeButton>
       </ButtonsWrapper>
       <VoterBoardContainer>{renderVoters()}</VoterBoardContainer>
