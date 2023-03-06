@@ -1,42 +1,44 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { shuffleArray } from "../../Utils/localUtils";
 import Voter from "../Voter/Voter";
+
+const ALPHABET = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
 
 const VotersBoard = (props) => {
   const { totalAlters, updateVoters } = props;
-  const [alternatives, setAlternatives] = useState([]);
-  const [voters, setVoters] = useState([{ type: "0", alters_pref: [] }]);
-  const alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
+  const [voters, setVoters] = useState([{ type: "0", alters_pref: ALPHABET.slice(0, totalAlters) }]);
+
 
   const addVoter = () => {
-    const newVoter = { type: 0, alters_pref: [] };
+    const newVoter = { type: 0, alters_pref: ALPHABET.slice(0, totalAlters) };
     setVoters((prev) => [...prev, newVoter]);
     props.updateVoters(voters);
   };
@@ -57,7 +59,7 @@ const VotersBoard = (props) => {
           <Voter
             id={index}
             type={v.type}
-            preference={alternatives}
+            preference={voters[index].alters_pref}
             voterUpdate={voterUpdate}
           />
         </VoterRow>
@@ -67,22 +69,21 @@ const VotersBoard = (props) => {
   };
 
   const randomize = () => {
-    const votersCopy = [...voters];
-    for (let index = 0; index < votersCopy.length; index++) {
-      votersCopy[index].alters_pref = votersCopy[index].alters_pref.sort(() => Math.random() - 0.5);
-    }
-    setVoters(votersCopy);
+    const newVoters = voters.map(voter => ({
+      ...voter,
+      alters_pref: shuffleArray([...voter.alters_pref])
+    }));
+    setVoters(newVoters);
   }
 
   useEffect(() => {
-    updateVoters(voters);
-    setAlternatives(alphabet.slice(0, 1));
-  }, []);
-
-  useEffect(() => {
-    updateVoters(voters);
-    const altersMax = totalAlters >= alphabet.length ? alphabet.length : totalAlters; // max choice in the alphabet
-    setAlternatives(alphabet.slice(0, altersMax));
+    const updatedVoters = voters.map(voter => ({
+      ...voter,
+      alters_pref: totalAlters > voter.alters_pref.length ? voter.alters_pref.concat(ALPHABET.slice(voter.alters_pref.length, totalAlters)) :
+        voter.alters_pref.slice(0, totalAlters)
+    }))
+    console.log(updatedVoters)
+    setVoters(updatedVoters);
   }, [totalAlters]);
 
   return (
