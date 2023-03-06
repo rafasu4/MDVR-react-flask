@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { shuffleArray } from "../../Utils/localUtils";
 import Voter from "../Voter/Voter";
+import TextDiv from "../../components/common/TextDiv";
 
 const ALPHABET = [
   "A",
@@ -35,7 +36,7 @@ const ALPHABET = [
 const VotersBoard = (props) => {
   const { totalAlters, updateVoters } = props;
   const [voters, setVoters] = useState([{ type: "0", alters_pref: ALPHABET.slice(0, totalAlters) }]);
-
+  const organizeAltersDescription = 'Use drag & drop to organize the preferred alternatives for each voter.';
 
   const addVoter = () => {
     const newVoter = { type: 0, alters_pref: ALPHABET.slice(0, totalAlters) };
@@ -92,6 +93,13 @@ const VotersBoard = (props) => {
         <CreateButton onClick={addVoter}>Add Voter</CreateButton>
         <RandomizeButton onClick={randomize}>Randomize</RandomizeButton>
       </ButtonsWrapper>
+      <TextDiv
+        text={organizeAltersDescription}
+        width="fit-content"
+        height="fit-content"
+        color='#b9b9b9'
+        weight={400}
+      />
       <VoterBoardContainer>{renderVoters()}</VoterBoardContainer>
     </VoterBoardWrapper>
   );
