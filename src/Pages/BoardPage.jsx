@@ -11,6 +11,7 @@ import {
   HeadersWrapper,
 } from "./BoardPage.styled";
 import VotersBoard from "../components/Board/VotersBoard";
+import { ALPHABET } from "../assets/consts";
 
 const BoardContainer = () => {
   const title = "Consensus Under Deadline";
@@ -25,34 +26,6 @@ const BoardContainer = () => {
   const [voters, setVoters] = useState([{}]);
   const navigate = useNavigate();
 
-  const alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
   const updateVoters = (voters) => {
     setVoters(voters);
   };
@@ -67,7 +40,7 @@ const BoardContainer = () => {
 
   const submitHandler = () => {
     const totalVoters = voters.length;
-    const alters = alphabet.slice(0, totalAlters);
+    const alters = ALPHABET.slice(0, totalAlters);
     const body = {
       voters: [...Array(totalVoters).keys()].map((i) => i + 1),
       voters_type: voters.map((v) => parseInt(v.type)),
@@ -76,6 +49,7 @@ const BoardContainer = () => {
       remaining_rounds: parseInt(rounds),
     };
     handleSubmit(body).then((res) => {
+      console.log(res)
       navigate("/winner", { state: { winner: res.message, voters_preferences: body.voters_preferences } });
     });
   };

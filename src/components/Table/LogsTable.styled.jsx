@@ -50,3 +50,19 @@ export const TableRow = styled.tr`
   table-layout: fixed;
   font-family: Open Sans;
 `;
+
+export const VoterBallot = styled.div`
+    font-family: sans-serif;
+`;
+
+export const ChosenVoterBallot = styled.div`
+    font-family: sans-serif;
+    color: red;
+`;
+
+export const VotersBallotWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
