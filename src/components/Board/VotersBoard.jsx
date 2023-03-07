@@ -3,35 +3,7 @@ import styled from "styled-components";
 import { shuffleArray } from "../../Utils/localUtils";
 import Voter from "../Voter/Voter";
 import TextDiv from "../../components/common/TextDiv";
-
-const ALPHABET = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
+import { ALPHABET } from "../../assets/consts";
 
 const VotersBoard = (props) => {
   const { totalAlters, updateVoters } = props;
@@ -83,7 +55,6 @@ const VotersBoard = (props) => {
       alters_pref: totalAlters > voter.alters_pref.length ? voter.alters_pref.concat(ALPHABET.slice(voter.alters_pref.length, totalAlters)) :
         voter.alters_pref.slice(0, totalAlters)
     }))
-    console.log(updatedVoters)
     setVoters(updatedVoters);
   }, [totalAlters]);
 
