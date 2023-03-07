@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import ToolTip from "../ToolTip";
 import Alternative from "./Alternative";
 import VoterType from "./VoterType";
 
