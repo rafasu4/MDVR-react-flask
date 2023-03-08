@@ -122,6 +122,10 @@ const CreateButton = styled.button`
   border: 1px solid white;
   cursor: pointer;
   font-weight: 900;
+  &: hover {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+  }
 `;
 
 const RandomizeButton = styled.button`
@@ -134,6 +138,10 @@ const RandomizeButton = styled.button`
   border: 1px solid white;
   cursor: pointer;
   font-weight: 900;
+    &: hover {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+  }
 `;
 
 export default VotersBoard;
