@@ -51,6 +51,11 @@ const VotersBoard = (props) => {
     setVoters(newVoters);
   }
 
+  const clearDataHandler = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   useEffect(() => {
     const updatedVoters = voters.map(voter => ({
       ...voter,
@@ -70,6 +75,7 @@ const VotersBoard = (props) => {
       <ButtonsWrapper>
         <CreateButton onClick={addVoter}>Add Voter</CreateButton>
         <RandomizeButton onClick={randomize}>Randomize</RandomizeButton>
+        <ClearDataBtn onClick={clearDataHandler}>Clear data</ClearDataBtn>
       </ButtonsWrapper>
       <TextDiv
         text={organizeAltersDescription}
@@ -146,6 +152,24 @@ const RandomizeButton = styled.button`
   cursor: pointer;
   font-weight: 900;
     &: hover {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+  }
+`;
+
+const ClearDataBtn = styled.button`
+  display: flex;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  background: #6E6D70;
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+  color: #DFDEDF;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-weight: 600;
+  cursor: pointer;
+  &:focus {
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
   }
