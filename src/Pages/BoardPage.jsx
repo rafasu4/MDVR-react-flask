@@ -21,7 +21,8 @@ const BoardContainer = () => {
   const altersInfo =
     "Alternatives represent the choices offered to the voters.";
   const roundInfo = "Total rounds for the voters to come to agreement.";
-  const [totalAlters, setTotalAlters] = useState(1);
+  const totalAltersFromLocalStorage = localStorage.getItem('totalAlters') || 1;
+  const [totalAlters, setTotalAlters] = useState(totalAltersFromLocalStorage);
   const [rounds, setRounds] = useState(0);
   const [voters, setVoters] = useState([{}]);
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const BoardContainer = () => {
   };
 
   const totalAltersChangeHandler = (e) => {
+    localStorage.setItem('totalAlters', e.target.value);
     setTotalAlters(e.target.value);
   };
 
@@ -92,7 +94,6 @@ const BoardContainer = () => {
           <CountInput
             value={totalAlters}
             min={1}
-            max={7}
             onChange={totalAltersChangeHandler}
             info={altersInfo}
           />

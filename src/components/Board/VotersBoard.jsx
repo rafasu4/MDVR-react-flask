@@ -6,12 +6,14 @@ import TextDiv from "../../components/common/TextDiv";
 import { ALPHABET } from "../../assets/consts";
 
 const VotersBoard = (props) => {
-  const { totalAlters, updateVoters } = props;
-  const [voters, setVoters] = useState([{ type: "0", alters_pref: ALPHABET.slice(0, totalAlters) }]);
+  const { totalAlters } = props;
+  const [currentAlters, setCurrentAlters] = useState(ALPHABET.slice(0, totalAlters));
+  const votersFromLocalStorage = JSON.parse(localStorage.getItem('voters') || '[]');
+  const [voters, setVoters] = useState(votersFromLocalStorage.length !== 0 ? votersFromLocalStorage : [{ type: 0, alters_pref: currentAlters }]);
   const organizeAltersDescription = 'Use drag & drop to organize the preferred alternatives for each voter.';
 
   const addVoter = () => {
-    const newVoter = { type: 0, alters_pref: ALPHABET.slice(0, totalAlters) };
+    const newVoter = { type: 0, alters_pref: currentAlters };
     setVoters((prev) => [...prev, newVoter]);
     props.updateVoters(voters);
   };
@@ -55,8 +57,13 @@ const VotersBoard = (props) => {
       alters_pref: totalAlters > voter.alters_pref.length ? voter.alters_pref.concat(ALPHABET.slice(voter.alters_pref.length, totalAlters)) :
         voter.alters_pref.slice(0, totalAlters)
     }))
+    setCurrentAlters(ALPHABET.slice(0, totalAlters));
     setVoters(updatedVoters);
   }, [totalAlters]);
+
+  useEffect(() => {
+    localStorage.setItem('voters', JSON.stringify(voters));
+  }, [voters])
 
   return (
     <VoterBoardWrapper>
