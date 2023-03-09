@@ -27,7 +27,6 @@ const LogsTable = (props) => {
         possible_winners: JSON.stringify(log.possible_winners).replace(new RegExp(charToRemove, 'g'), ' '),
         changed_vote: JSON.stringify(log.changed_vote)
       }
-      console.log(currentLogData.scores)
       ans.push(currentLogData);
     })
     return ans;
@@ -39,17 +38,14 @@ const LogsTable = (props) => {
     const voters = Object.keys(ballots);
     const votes = Object.values(ballots);
     let ans = []
-    let iteration = 0;
-    for (const bl in voters) {
-      changed_voter && bl === changed_voter ? ans.push(<ChosenVoterBallot key={iteration}>Voter {iteration + 1}: {votes[iteration]}</ChosenVoterBallot>) : ans.push(<VoterBallot key={iteration}>Voter {iteration + 1}: {votes[iteration]}</VoterBallot>);
-      iteration++;
-    }
+    voters.forEach((el, i) => {
+      ans.push(changed_voter && (el === changed_voter) ? <ChosenVoterBallot key={i}>Voter {i + 1}: {votes[i]}</ChosenVoterBallot> : <VoterBallot key={i}>Voter {i + 1}: {votes[i]}</VoterBallot>);
+    })
     return ans;
   }
 
   const renderScores = (scores) => {
     const votes = Object.keys(scores);
-    console.log(votes)
     const voteScores = Object.values(scores);
     let ans = [];
     votes.forEach((el, i) => {
