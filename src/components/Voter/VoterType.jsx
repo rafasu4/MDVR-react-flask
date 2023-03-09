@@ -5,13 +5,13 @@ const VoterType = (props) => {
     return (
         <Select
             id="voter-type"
-            value={type}
+            defaultValue={type}
             onChange={(e) => onTypeChangeHandler(e)}
         >
-            <option key="0" value={0}>
+            <option key="0" value="0">
                 Lazy
             </option>
-            <option key="1" value={1}>
+            <option key="1" value="1">
                 Active
             </option>
         </Select>

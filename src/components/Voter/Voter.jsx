@@ -5,12 +5,11 @@ import VoterType from "./VoterType";
 
 const Voter = (props) => {
   const { id, voterUpdate } = props;
-  const [type, setType] = useState(0);
+  const [type, setType] = useState(props.type);
   const [preference, setPreference] = useState([]);
   const dragItemStart = useRef();
   const dragItemHover = useRef();
-  const userTypeInfo = `Choose type - 0 for 'Lazy' or 1 for 'Active'`;
-
+  
   const onTypeChangeHandler = (e) => {
     setType(e.target.value);
     voterUpdate(id, "type", e.target.value);
