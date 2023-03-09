@@ -22,8 +22,9 @@ const BoardContainer = () => {
     "Alternatives represent the choices offered to the voters.";
   const roundInfo = "Total rounds for the voters to come to agreement.";
   const totalAltersFromLocalStorage = localStorage.getItem('totalAlters') || 1;
+  const totalRoundsFromLocalStorage = localStorage.getItem('totalRounds') || 0;
   const [totalAlters, setTotalAlters] = useState(totalAltersFromLocalStorage);
-  const [rounds, setRounds] = useState(0);
+  const [rounds, setRounds] = useState(totalRoundsFromLocalStorage);
   const [voters, setVoters] = useState([{}]);
   const navigate = useNavigate();
 
@@ -37,6 +38,7 @@ const BoardContainer = () => {
   };
 
   const totalRoundsChangeHandler = (e) => {
+    localStorage.setItem('totalRounds', e.target.value);
     setRounds(e.target.value);
   };
 

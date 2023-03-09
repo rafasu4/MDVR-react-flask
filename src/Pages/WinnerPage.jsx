@@ -70,7 +70,6 @@ const WinnerPage = () => {
             info={tableDescription} />
         </ToolTipWrapper>
         <LogsTable logs={state.winner[0]} />
-
       </LogsTableWrapper>
       <button onClick={() => state.winner[2] ? exportTxtFile(state.winner[2]) : ''} >Export Full Logs</button>
     </WinnerPageWrapper>
