@@ -4,7 +4,7 @@ import ProgressBar from "../components/common/ProgressBar";
 import LogsTable from "../components/Table/LogsTable";
 import ToolTip from "../components/ToolTip";
 import { exportTxtFile } from "../Utils/localUtils";
-import { Card, CardHeader, CardText, GeneralData, LogsTableWrapper, ToolTipWrapper, VoterSatWrapper, WinnerPageWrapper } from "./WinnerPage.styled";
+import { Card, CardHeader, CardText, GeneralData, LogsTableWrapper, ToolTipWrapper, VoterSatWrapper, WinnerPageWrapper, WinnerSpan } from "./WinnerPage.styled";
 
 const WinnerPage = () => {
   const { state } = useLocation();
@@ -48,8 +48,8 @@ const WinnerPage = () => {
     <WinnerPageWrapper>
       <GeneralData>
         <Card>
-          <CardHeader>Winner</CardHeader>
-          <CardText>{state.winner[1]}</CardText>
+          <CardText><WinnerSpan>Winner: </WinnerSpan>{state.winner[1]}</CardText>
+          <CardText><WinnerSpan>Time Until Convergence: {state.winner[2]} Rounds</WinnerSpan></CardText>
         </Card>
         <Card>
           <CardHeader>Group Satisfaction</CardHeader>

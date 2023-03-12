@@ -18,6 +18,11 @@ export const GeneralData = styled.div`
   gap: 10px;
 `;
 
+export const WinnerSpan = styled.span`
+  font-weight: 700;
+  color: #b9b9b9;
+`;
+
 export const Card = styled.div`
   display: flex;
   flex-direction: column;

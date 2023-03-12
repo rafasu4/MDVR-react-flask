@@ -7,7 +7,6 @@ import TextDiv from "../components/common/TextDiv";
 import {
   TitleStyle,
   HeaderStyle,
-  DescriptionStyle,
   HeadersWrapper,
 } from "./BoardPage.styled";
 import VotersBoard from "../components/Board/VotersBoard";
