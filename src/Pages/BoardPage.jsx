@@ -113,7 +113,7 @@ const BoardContainer = () => {
 };
 
 const VotersBoardWrapper = styled.div`
-  height: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   max-width: 38em;

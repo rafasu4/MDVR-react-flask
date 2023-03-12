@@ -75,15 +75,18 @@ const VotersBoard = (props) => {
       <ButtonsWrapper>
         <CreateButton onClick={addVoter}>Add Voter</CreateButton>
         <RandomizeButton onClick={randomize}>Randomize</RandomizeButton>
-        <ClearDataBtn onClick={clearDataHandler}>Clear data</ClearDataBtn>
       </ButtonsWrapper>
-      <TextDiv
-        text={organizeAltersDescription}
-        width="fit-content"
-        height="fit-content"
-        color='#b9b9b9'
-        weight={400}
-      />
+      <ClearBtnWrapper>
+        <TextDiv
+          text={organizeAltersDescription}
+          width="fit-content"
+          height="fit-content"
+          color='#b9b9b9'
+          weight={400}
+        />
+
+        <ClearDataBtn onClick={clearDataHandler}>Clear</ClearDataBtn>
+      </ClearBtnWrapper>
       <VoterBoardContainer>{renderVoters()}</VoterBoardContainer>
     </VoterBoardWrapper>
   );
@@ -94,6 +97,11 @@ const VoterBoardWrapper = styled.div`
   max-width: 100%;
   flex-direction: column;
   margin-top: 30px;
+`;
+
+const ClearBtnWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -159,6 +167,8 @@ const RandomizeButton = styled.button`
 
 const ClearDataBtn = styled.button`
   display: flex;
+  height: fit-content;
+  width: fit-content;
   padding: 6px 14px;
   border-radius: 6px;
   border: none;
