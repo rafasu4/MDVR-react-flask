@@ -99,7 +99,7 @@ const LogsTable = (props) => {
           <TableHeaderCell key="filler1_header" width="10%" />
           <TableHeaderCell key="time">Remaining Rounds</TableHeaderCell>
           <TableHeaderCell key="voters">
-            Voters Ballot
+            Voters Ballots
           </TableHeaderCell>
           <TableHeaderCell key="scores">Scores</TableHeaderCell>
           <TableHeaderCell key="possible_winners">

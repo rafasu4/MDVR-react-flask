@@ -15,9 +15,7 @@ import { ALPHABET } from "../assets/consts";
 
 const BoardContainer = () => {
   const title = "Consensus Under Deadline";
-  const header = "MDVR - Algorithm for group making decision";
-  const description =
-    "Enter the required fields in order to run the algorithm.";
+  const header = "Algorithm for reaching a group consensus under a deadline.";
   const altersInfo =
     "Alternatives represent the choices offered to the voters.";
   const roundInfo = "Total rounds for the voters to come to agreement.";
@@ -75,14 +73,6 @@ const BoardContainer = () => {
           weight={HeaderStyle.fontWeight}
           fontSize={HeaderStyle.fontSize}
         />
-        <TextDiv
-          text={description}
-          width={DescriptionStyle.width}
-          height={DescriptionStyle.height}
-          weight={DescriptionStyle.fontWeight}
-          fontSize={DescriptionStyle.fontSize}
-          margin={DescriptionStyle.margin}
-        />
       </HeadersWrapper>
       <GeneralData>
         <OptionsWrapper>
@@ -117,7 +107,7 @@ const BoardContainer = () => {
         </OptionsWrapper>
       </GeneralData>
       <VotersBoard totalAlters={totalAlters} updateVoters={updateVoters} />
-      <SubmitBtn onClick={submitHandler}>submit</SubmitBtn>
+      <SubmitBtn onClick={submitHandler}>Run The Algorithm</SubmitBtn>
     </VotersBoardWrapper>
   );
 };

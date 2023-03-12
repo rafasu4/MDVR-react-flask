@@ -48,7 +48,7 @@ const WinnerPage = () => {
     <WinnerPageWrapper>
       <GeneralData>
         <Card>
-          <CardHeader>Winner Alternative</CardHeader>
+          <CardHeader>Winner</CardHeader>
           <CardText>{state.winner[1]}</CardText>
         </Card>
         <Card>
@@ -58,7 +58,7 @@ const WinnerPage = () => {
           </CardText>
         </Card>
         <Card>
-          <CardHeader>Voters Satisfaction</CardHeader>
+          <CardHeader>Voter Satisfaction</CardHeader>
           <CardText>
             {renderVotersSatisfaction()}
           </CardText>
