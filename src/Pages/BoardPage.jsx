@@ -50,7 +50,6 @@ const BoardContainer = () => {
       remaining_rounds: parseInt(rounds),
     };
     handleSubmit(body).then((res) => {
-      console.log(res)
       navigate("/winner", { state: { winner: res.message, voters_preferences: body.voters_preferences } });
     });
   };

@@ -84,7 +84,6 @@ const VotersBoard = (props) => {
           color='#b9b9b9'
           weight={400}
         />
-
         <ClearDataBtn onClick={clearDataHandler}>Clear</ClearDataBtn>
       </ClearBtnWrapper>
       <VoterBoardContainer>{renderVoters()}</VoterBoardContainer>
@@ -101,7 +100,7 @@ const VoterBoardWrapper = styled.div`
 
 const ClearBtnWrapper = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 `;
 
 const ButtonsWrapper = styled.div`
