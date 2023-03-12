@@ -48,8 +48,8 @@ const WinnerPage = () => {
     <WinnerPageWrapper>
       <GeneralData>
         <Card>
-          <CardText><WinnerSpan>Winner: </WinnerSpan>{state.winner[1]}</CardText>
-          <CardText><WinnerSpan>Time Until Convergence: {state.winner[2]} Rounds</WinnerSpan></CardText>
+          <CardText> <WinnerSpan>Winner: </WinnerSpan>{state.winner[1]}</CardText>
+          <CardText><WinnerSpan>Time Until Convergence: </WinnerSpan>{state.winner[2]} <WinnerSpan>Rounds</WinnerSpan></CardText>
         </Card>
         <Card>
           <CardHeader>Group Satisfaction</CardHeader>
